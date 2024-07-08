@@ -1,0 +1,595 @@
+/**********************************************************************************************************/
+/*********** AGGIORNARE SEMPRE IL CODICE CSS CON "AUTOPREFIXER" *******************************************/
+/**********vai sulla barra search + premi F1 + digita autoprefixer ****************************************/
+
+/************* https://github.com/postcss/autoprefixer?tab=readme-ov-file ********************************/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+:root {
+    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+    --duration: 6.66s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+    width: 100%;
+    display: -webkit-flex; /* Prefisso per Safari */
+    display: flex;
+    -webkit-align-items: center; /* Prefisso per Safari */
+       -moz-align-items: center; /* Prefisso per Firefox */
+        -ms-align-items: center; /* Prefisso per IE */
+            align-items: center;
+    -webkit-justify-content: center; /* Prefisso per Safari */
+       -moz-justify-content: center; /* Prefisso per Firefox */
+        -ms-justify-content: center; /* Prefisso per IE */
+            justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow: hidden;
+    color: #ffffff;
+    background-image: -webkit-radial-gradient(circle at center, #1192ce, #000d18 80%, #120018 100%);
+    background-image: -moz-radial-gradient(circle at center, #1192ce, #000d18 80%, #120018 100%);
+    background-image: -ms-radial-gradient(circle at center, #1192ce, #000d18 80%, #120018 100%);
+    background-image: radial-gradient(circle at center, #1192ce, #000d18 80%, #120018 100%);
+}
+
+/* Serve per evitare il bug del caricamento carte */
+body {
+    visibility: hidden;
+}
+
+/* Mostra il contenuto del body solo dopo che il caricamento è completo */
+body.loaded {
+    visibility: visible;
+}
+
+a {
+    cursor: pointer;
+    transition: all 200ms linear;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffeba7;
+}
+
+.link {
+    color: #c4c3ca;
+}
+
+.link:hover {
+    color: #ffeba7;
+}
+
+.size-22 {
+    font-size: 22px;
+}
+
+swiper-container {
+    /* codice per far apparire in dissolvenza la card a caricamento pagina */
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+    /***** dimensioni responsive ******/
+    width: 70vw;
+    max-width: 340px;
+    height: calc(70vw * 3 / 2); /* Mantiene il rapporto 3/2 */
+    max-height: 510px;
+    /**********************************/
+    cursor: pointer;
+    -webkit-animation: shimmy 6s ease-in-out infinite;
+       -moz-animation: shimmy 6s ease-in-out infinite;
+        -ms-animation: shimmy 6s ease-in-out infinite;
+         -o-animation: shimmy 6s ease-in-out infinite;
+            animation: shimmy 6s ease-in-out infinite;
+}
+
+swiper-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform, opacity;
+    transition: -webkit-transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -moz-transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -ms-transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -o-transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /***** dimensioni responsive ******/
+    width: 70vw;
+    max-width: 340px;
+    height: calc(70vw * 3 / 2); /* Mantiene il rapporto 3/2 */
+    max-height: 510px;
+    /**********************************/
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    overflow: hidden;
+    border-top: 1px solid #ffffff41;
+    border-left: 1px solid #ffffff5e;
+    border-bottom: 1px solid #0000005b;
+    box-shadow: rgba(0, 0, 0, 0.9) -15px 20px 20px, rgba(0, 0, 0, 0.9) -15px 30px 30px;
+}
+
+.glassmorphism {
+    position: absolute;
+    top: 0;
+    height: calc(70vw * 3 / 2);
+    max-height: 510px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgb(0, 0, 0);
+    -webkit-backdrop-filter: blur(1.2px); /* Prefisso per Safari */
+       -moz-backdrop-filter: blur(1.2px); /* Prefisso per Firefox */
+        -ms-backdrop-filter: blur(1.2px); /* Prefisso per IE */
+            backdrop-filter: blur(1.2px);
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.shine {
+    position: absolute;
+    width: 1000px;
+    height: 200px;
+    margin-left: -100px;
+    -webkit-transform: rotate(30deg); /* Prefisso per Safari */
+       -moz-transform: rotate(30deg); /* Prefisso per Firefox */
+        -ms-transform: rotate(30deg); /* Prefisso per IE */
+            transform: rotate(30deg);
+    background: -webkit-linear-gradient(top, transparent, rgba(200, 200, 200, 0.4), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(200, 200, 200, 0.4), transparent); /* Aggiunto senza prefisso per non Safari */
+    -webkit-animation: shine 6s ease-in-out infinite;
+       -moz-animation: shine 6s ease-in-out infinite;
+        -ms-animation: shine 6s ease-in-out infinite;
+         -o-animation: shine 6s ease-in-out infinite;
+            animation: shine 6s ease-in-out infinite;
+}
+
+@-webkit-keyframes shine {
+    0%, 100% {
+        margin-top: -1000px;
+    }
+    50% {
+        margin-top: 800px;
+    }
+}
+@-moz-keyframes shine {
+    0%, 100% {
+        margin-top: -1000px;
+    }
+    50% {
+        margin-top: 800px;
+    }
+}
+@-ms-keyframes shine {
+    0%, 100% {
+        margin-top: -1000px;
+    }
+    50% {
+        margin-top: 800px;
+    }
+}
+@-o-keyframes shine {
+    0%, 100% {
+        margin-top: -1000px;
+    }
+    50% {
+        margin-top: 800px;
+    }
+}
+@keyframes shine {
+    0%, 100% {
+        margin-top: -1000px;
+    }
+    50% {
+        margin-top: 800px;
+    }
+}
+
+.imgbackgrouncard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 16px;
+    opacity: 0.8;
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+/******************* formattazione immagini di Lio per ogni card *******************/
+.img-Lio-1 {
+    position: absolute;
+    bottom: -30px;
+    left: 200px;
+    -webkit-filter: drop-shadow(5px 15px 5px black);
+    -moz-filter: drop-shadow(5px 15px 5px black);
+    -ms-filter: drop-shadow(5px 15px 5px black);
+    -o-filter: drop-shadow(5px 15px 5px black);
+    filter: drop-shadow(5px 15px 5px black);
+    opacity: 1;
+    z-index: 999999;
+}
+.Lio-1 {
+    width: 270px;
+}
+
+.img-Lio-2 {
+    position: absolute;
+    top: 0px;
+    left: 298px;
+    -webkit-filter: drop-shadow(5px 15px 15px black);
+    -moz-filter: drop-shadow(5px 15px 15px black);
+    -ms-filter: drop-shadow(5px 15px 15px black);
+    -o-filter: drop-shadow(5px 15px 15px black);
+    filter: drop-shadow(5px 15px 15px black);
+    opacity: 1;
+    z-index: 999999;
+}
+.Lio-2 {
+    width: 190px;
+}
+
+.img-Lio-3 {
+    position: absolute;
+    top: -150px;
+    left: 25px;
+    -webkit-filter: drop-shadow(5px 8px 5px black);
+    -moz-filter: drop-shadow(5px 8px 5px black);
+    -ms-filter: drop-shadow(5px 8px 5px black);
+    -o-filter: drop-shadow(5px 8px 5px black);
+    filter: drop-shadow(5px 8px 5px black);
+    opacity: 1;
+    z-index: 999999;
+}
+.Lio-3 {
+    width: 290px;
+}
+
+.img-Lio-4 {
+    position: absolute;
+    bottom: -20px;
+    left: -120px;
+    -webkit-filter: drop-shadow(5px 15px 5px black);
+    -moz-filter: drop-shadow(5px 15px 5px black);
+    -ms-filter: drop-shadow(5px 15px 5px black);
+    -o-filter: drop-shadow(5px 15px 5px black);
+    filter: drop-shadow(5px 15px 5px black);
+    opacity: 1;
+    z-index: 999999;
+}
+.Lio-4 {
+    width: 200px;
+}
+
+.img-Lio-5 {
+    position: absolute;
+    top: 0px;
+    left: -148px;
+    -webkit-filter: drop-shadow(2px 20px 5px black);
+    -moz-filter: drop-shadow(2px 20px 5px black);
+    -ms-filter: drop-shadow(2px 20px 5px black);
+    -o-filter: drop-shadow(2px 20px 5px black);
+    filter: drop-shadow(2px 20px 5px black);
+    opacity: 1;
+    z-index: 999999;
+}
+.Lio-5 {
+    width: 180px;
+}
+
+.img-Lio-6 {
+    position: absolute;
+    top: -150px;
+    left: 100px;
+    -webkit-filter: drop-shadow(2px 20px 5px black);
+    -moz-filter: drop-shadow(2px 20px 5px black);
+    -ms-filter: drop-shadow(2px 20px 5px black);
+    -o-filter: drop-shadow(2px 20px 5px black);
+    filter: drop-shadow(2px 20px 5px black);
+    opacity: 1;
+    z-index: 0;
+}
+.Lio-6 {
+    width: 190px;
+}
+/***************************************************************************/
+
+
+
+/******************* formattazione immagini di Lio per ogni card *******************/
+.img-top-card {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 28%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(-3deg);
+    -moz-transform: translate(-50%, -50%) rotate(-3deg);
+    -ms-transform: translate(-50%, -50%) rotate(-3deg);
+    -o-transform: translate(-50%, -50%) rotate(-3deg);
+    transform: translate(-50%, -50%) rotate(-3deg);
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.774));
+    -moz-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.774));
+    -ms-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.774));
+    -o-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.774));
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.774));
+    opacity: 0.5;
+    z-index: 0;
+}
+.top-card {
+    /***** dimensioni responsive ******/
+    width: 50vw;
+    max-width: 250px;
+    /**********************************/
+}
+/***************************************************************************/
+
+
+
+/********************* formattazione testi di ogni card *******************/
+.testi {
+    top: 20px;
+    width: 100vw;
+    max-width: 285px;
+    height: calc(100vw * 3 / 2);
+    max-height: 510px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    pointer-events: none; /* Aggiunto per ignorare gli eventi del contenitore */
+}
+
+.testi h4 {
+    position: relative;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #ffffff;
+    -webkit-transform: translate3d(0, 0, 35px) perspective(100px);
+    -moz-transform: translate3d(0, 0, 35px) perspective(100px);
+    -ms-transform: translate3d(0, 0, 35px) perspective(100px);
+    -o-transform: translate3d(0, 0, 35px) perspective(100px);
+    transform: translate3d(0, 0, 35px) perspective(100px);
+    margin-bottom: 40px;
+}
+
+.testi h2 {
+    position: relative;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 36px;
+    line-height: 1.1;
+    color: #ffffff;
+    -webkit-transform: translate3d(0, 0, 30px) perspective(100px);
+    -moz-transform: translate3d(0, 0, 30px) perspective(100px);
+    -ms-transform: translate3d(0, 0, 30px) perspective(100px);
+    -o-transform: translate3d(0, 0, 30px) perspective(100px);
+    transform: translate3d(0, 0, 30px) perspective(100px);
+    margin-bottom: 20px;
+}
+
+.testi h2 sup {
+    font-size: 20px;
+}
+
+.testi p {
+    position: relative;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1px;
+    color: #ffffff;
+    -webkit-transform: translate3d(0, 0, 30px) perspective(100px);
+    -moz-transform: translate3d(0, 0, 30px) perspective(100px);
+    -ms-transform: translate3d(0, 0, 30px) perspective(100px);
+    -o-transform: translate3d(0, 0, 30px) perspective(100px);
+    transform: translate3d(0, 0, 30px) perspective(100px);
+}
+/***************************************************************************/
+
+
+
+/********* FORMATTAZIONE DEL LINK "SCOPRI DI PIU' !" ***********************/
+.testi .link-container {
+    pointer-events: all; /* Aggiunto per permettere i click sui link */
+    z-index: 9999999999999999999999; /* Portato al massimo per sovrapporre correttamente */
+}
+
+.testi .link {
+    position: relative;
+    padding: 12px 20px;
+    margin-top: 30px;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 1px;
+    background-color: #00b7ff;
+    transition: all 200ms linear;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    pointer-events: all; /* Aggiunto per permettere i click sui link */
+    z-index: 9999999999999999999999; /* Portato al massimo per sovrapporre correttamente */
+}
+
+.testi .link:hover {
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 1px;
+    background-color: #ffeba7;
+}
+
+/***************** testi globali effetto bassorilievo in nero ************/
+h2, h4, p, .link {
+    -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+    text-shadow: 
+        0px -1px 0 #212121a9, 0px -1px 0 #212121a9, 
+        0px 1px 0 #212121a9, 0px 1px 0 #212121a9, 
+        -1px 0px 0 #212121a9, 1px 0px 0 #212121a9, 
+        -1px 0px 0 #212121a9, 1px 0px 0 #212121a9, 
+        -1px -1px 0 #212121a9, 1px -1px 0 #212121a9, 
+        -1px 1px 0 #212121a9, 1px 1px 0 #212121a9, 
+        -1px 3px 0 #212121a9, 0px 3px 0 #212121a9, 
+        1px 3px 0 #212121a9, 0 3.17px 0.17px rgba(0,0,0,.1), 
+        0 0 1px rgba(0,0,0,.1), 0 1px 0.5px rgba(0,0,0,.3), 
+        0 2px 1px rgba(0,0,0,.2), 0 3px 3px rgba(0,0,0,.25), 
+        0 4px 4px rgba(0,0,0,.2), 0 6px 6px rgba(0,0,0,.15);
+}
+
+h2, h4, p, .link {
+    letter-spacing: 3px;
+}
+
+
+/************************** keyframes ***********************************/
+@-webkit-keyframes border-transform {
+    0%, 100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
+    14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; }
+    28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; }
+    42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; }
+    56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; }
+    70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; }
+    84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; }
+}
+
+@-moz-keyframes border-transform {
+    0%, 100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
+    14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; }
+    28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; }
+    42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; }
+    56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; }
+    70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; }
+    84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; }
+}
+
+@keyframes border-transform {
+    0%, 100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
+    14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; }
+    28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; }
+    42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; }
+    56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; }
+    70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; }
+    84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; }
+}
+
+
+
+@media screen and (max-device-width: 485px) and (orientation: portrait) { /** orientamento verticale **/ 
+    .testi {
+        position: absolute;
+        top: 54%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        width: clamp(52vw, 52vw, 100%);
+        max-width: 285px;
+        height: clamp(calc(70vw * 3 / 2), calc(70vw * 3 / 2), 100%);
+        max-height: 510px;
+        -webkit-transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease, -webkit-transform 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease, transform 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .testi h4 {
+        font-size: clamp(10px, 4vw, 20px); /* Utilizza clamp per il font size */
+        margin-bottom: clamp(20px, 50vw, 20px); /* Ottimizza il margine con clamp */
+        -webkit-transition: font-size 0.3s ease, margin-bottom 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: font-size 0.3s ease, margin-bottom 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .testi h2 {
+        font-size: clamp(24px, 7vw, 36px); /* Utilizza clamp per il font size */
+        margin-top: clamp(10px, 3vw, 30px); /* Margine più ridotto tra h4 e h2 */
+        margin-bottom: clamp(10px, 5vw, 20px); /* Ottimizza il margine con clamp */
+        -webkit-transition: font-size 0.3s ease, margin-bottom 0.3s ease, margin-top 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: font-size 0.3s ease, margin-bottom 0.3s ease, margin-top 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .testi h2 sup {
+        font-size: clamp(14px, 4vw, 20px); /* Utilizza clamp per il font size */
+        -webkit-transition: font-size 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: font-size 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .testi .simbolo {
+        margin-top: clamp(-5px, -3vw, 20px); /* Esempio di margine proporzionale per il simbolo */
+        margin-bottom: clamp(-5px, -5vw, 10px); /* Ottimizza il margine con clamp */
+        -webkit-transition: font-size 0.3s ease, margin-top 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: font-size 0.3s ease, margin-top 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .testi .descrizione {
+        font-size: clamp(8px, 3vw, 14px); /* Utilizza clamp per il font size */
+        margin-bottom: clamp(5px, 1vw, 10px); /* Ottimizza il margine con clamp */
+        -webkit-transition: font-size 0.3s ease, margin-bottom 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: font-size 0.3s ease, margin-bottom 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .testi .link {
+        padding: clamp(10px, 3vw, 12px) clamp(20px, 3vw, 24px); /* Utilizza clamp per il padding */
+        font-size: clamp(8px, 3vw, 14px); /* Utilizza clamp per il font size */
+        margin-top: clamp(10px, 3vw, 20px); /* Esempio di margine proporzionale per il simbolo */
+        -webkit-transition: font-size 0.3s ease, margin-bottom 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: font-size 0.3s ease, margin-bottom 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+}
+
+@media screen and (max-device-width: 599px) and (orientation: portrait) { /** orientamento verticale **/ 
+    .img-Lio-1 {
+        position: absolute;
+        bottom: clamp(-40px, -5vw, -20px); /* Regola la posizione in basso con clamp */
+        left: clamp(100px, 40vw, 200px); /* Regola la posizione a sinistra con clamp */
+        -webkit-filter: drop-shadow(clamp(2px, 1vw, 5px) clamp(5px, 3vw, 15px) clamp(2px, 1vw, 5px) black);
+                filter: drop-shadow(clamp(2px, 1vw, 5px) clamp(5px, 3vw, 15px) clamp(2px, 1vw, 5px) black);
+        opacity: 1;
+        z-index: 999999;
+        -webkit-transition: bottom 0.3s ease, left 0.3s ease, -webkit-filter 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: bottom 0.3s ease, left 0.3s ease, filter 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+    .Lio-1 {
+        width: clamp(100px, 40vw, 270px); /* Regola la larghezza con clamp */
+        -webkit-transition: width 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+        transition: width 0.3s ease; /* Aggiunge una transizione per un ridimensionamento fluido */
+    }
+}
+
+
+
